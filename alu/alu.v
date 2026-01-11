@@ -14,7 +14,7 @@ module alu (
             3'b000: result = a & b;                           // AND
             3'b001: result = a | b;                           // OR
             3'b111: result = ($signed(a) < $signed(b)) ? 32'd1 : 32'd0; //SLT
-            default: result = 32'b0;                           
+            default: result = 32'b0;
         endcase
     end
 

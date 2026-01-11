@@ -1,6 +1,6 @@
 module pc_tb;
-    reg  clk;      
-    reg  rst;
+    reg         clk;
+    reg         rst;
     reg  [31:0] pc_next;
     wire [31:0] pc;
 
@@ -32,4 +32,8 @@ module pc_tb;
         $finish;
     end
 
+    initial begin
+        $dumpfile("pc_tb.vcd");
+        $dumpvars(0, pc_tb);
+    end
 endmodule
