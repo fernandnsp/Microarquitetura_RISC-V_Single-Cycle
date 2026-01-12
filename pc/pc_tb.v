@@ -16,19 +16,27 @@ module pc_tb;
     initial begin
         clk = 0;
         rst = 1;
-        pc_next = 32'd0;
-        #12;
+        pc_next = 32'h0000_0000;
 
-        pc_next = 32'd15;
-
-        #5;
+        #10;
         rst = 0;
-        #5;
 
-        pc_next = 32'd15;
-        #20;
-        pc_next = 32'd25;
-        #40;
+        $display("PC = %h (esperado 00001000)", pc);
+        #10;
+
+        pc_next = 32'h0000_1004;
+        #10;
+        $display("PC = %h (esperado 00001004)", pc);
+
+        pc_next = 32'h0000_1008;
+        #10;
+        $display("PC = %h (esperado 00001008)", pc);
+
+        pc_next = 32'h0000_1010;
+        #10;
+        $display("PC = %h (esperado 00001010)", pc);
+
+        #30;
         $finish;
     end
 
