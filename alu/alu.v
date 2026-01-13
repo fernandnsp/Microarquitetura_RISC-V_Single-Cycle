@@ -8,16 +8,15 @@ module alu (
     assign zero = (result == 32'b0);
 
     always @(*) begin
-          result = 32'b0;
-          
+        result = 32'b0;
+
         case (alu_ctrl)
-            3'b010: result = a + b;                           // ADD  (lw/sw)
-            3'b110: result = a - b;                           // SUB  (beq)
-            3'b000: result = a & b;                           // AND
-            3'b001: result = a | b;                           // OR
-            3'b111: result = ($signed(a) < $signed(b)) ? 32'd1 : 32'd0; //SLT
+            3'b000: result = a + b;                           // ADD (lw/sw)
+            3'b001: result = a - b;                           // SUB (beq)
+            3'b010: result = a & b;                           // AND
+            3'b011: result = a | b;                           // OR
+            3'b101: result = ($signed(a) < $signed(b)) ? 32'd1 : 32'd0; // SLT
             default: result = 32'b0;
         endcase
     end
-
 endmodule
