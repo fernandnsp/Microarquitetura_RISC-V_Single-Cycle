@@ -15,37 +15,37 @@ module alu_tb;
 
     initial begin
         // ADD
-        a = 32'd10; b = 32'd5; alu_ctrl = 3'b010;
+        a = 32'd00; b = 32'd5; alu_ctrl = 3'b010;
         #10;
         $display("ADD: %d + %d = %d", a, b, result);
 
         // SUB
-        alu_ctrl = 3'b110;
+        alu_ctrl = 3'b001;
         #10;
         $display("SUB: %d - %d = %d | zero=%b", a, b, result, zero);
 
         // AND
-        alu_ctrl = 3'b000;
+        alu_ctrl = 3'b010;
         #10;
         $display("AND: %b & %b = %b", a, b, result);
 
         // OR
-        alu_ctrl = 3'b001;
+        alu_ctrl = 3'b011;
         #10;
         $display("OR : %b | %b = %b", a, b, result);
 
         // SLT
-        a = 32'd5; b = 32'd10; alu_ctrl = 3'b111;
+        a = 32'd5; b = 32'd10; alu_ctrl = 3'b101;
         #10;
         $display("SLT: %d < %d = %d", a, b, result);
 
         // BEQ (zero flag) iguais
-        a = 32'd20; b = 32'd20; alu_ctrl = 3'b110;
+        a = 32'd20; b = 32'd20; alu_ctrl = 3'001;
         #10;
         $display("BEQ test iguais: result=%d zero=%b", result, zero);
 
         // BEQ (zero flag) diferentes
-        a = 32'd20; b = 32'd10; alu_ctrl = 3'b110;
+        a = 32'd20; b = 32'd10; alu_ctrl = 3'001;
         #10;
         $display("BEQ test diferentes: result=%d zero=%b", result, zero);
 
