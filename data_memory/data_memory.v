@@ -1,22 +1,26 @@
 module data_memory (
     input wire         clk,
-    input wire         we, // MemWrite - habilitar escrita
-    input wire  [31:0] a, // AluResult - endereco
-    input wire  [31:0] wd, // WriteData - dados de entrada
-    output wire [31:0] rd // ReadData - saida
+    input wire         we, // MemWrite
+    input wire  [31:0] a,  // ALUResult (endereço em bytes)
+    input wire  [31:0] wd, // WriteData
+    output wire [31:0] rd  // ReadData
 );
-    reg [31:0] ram [0:65535]; // memoria de 64k palavras
+    reg [31:0] ram [0:65535]; // memória de 64k palavras de 32 bits
 
-    assign rd = ram[a]; // Leitura assíncrona
+    wire [31:0] addr_word;
+    assign addr_word = a[31:2]; // converte byte -> palavra
+
+    // Leitura assíncrona
+    assign rd = ram[addr_word];
 
     // Escrita síncrona
     always @(posedge clk) begin
         if (we)
-            ram[a] <= wd;
+            ram[addr_word] <= wd;
     end
 
-    // 1000 usado no instruction memory
+    // Inicialização para simulação
     initial begin
-        ram[32'h2000] = 32'd10;
+        ram[32'h2000 >> 2] = 32'd10;
     end
 endmodule

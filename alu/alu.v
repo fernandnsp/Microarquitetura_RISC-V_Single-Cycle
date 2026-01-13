@@ -8,6 +8,8 @@ module alu (
     assign zero = (result == 32'b0);
 
     always @(*) begin
+          result = 32'b0;
+          
         case (alu_ctrl)
             3'b010: result = a + b;                           // ADD  (lw/sw)
             3'b110: result = a - b;                           // SUB  (beq)
