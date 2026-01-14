@@ -1,6 +1,6 @@
 module register_file_tb;
     reg         clk;
-    reg         reset;
+    reg         rst;
     reg         we3;
     reg  [4:0]  ra1, ra2, wa3;
     reg  [31:0] wd3;
@@ -8,7 +8,7 @@ module register_file_tb;
 
     register_file dut (
         .clk(clk),
-        .reset(reset),
+        .rst(rst),
         .we3(we3),
         .ra1(ra1),
         .ra2(ra2),
@@ -22,7 +22,7 @@ module register_file_tb;
 
     initial begin
         clk = 0;
-        reset = 1;
+        rst = 1;
         we3 = 0;
         ra1 = 0;
         ra2 = 0;
@@ -30,7 +30,7 @@ module register_file_tb;
         wd3 = 0;
 
         #10;
-        reset = 0;
+        rst = 0;
 
         // Escrita no registrador x1
         we3 = 1;
