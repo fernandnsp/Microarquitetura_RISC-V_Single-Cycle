@@ -27,7 +27,7 @@ module tb_cpu;
         // Inicialização
         clk = 0;
         rst = 1;
-        #25 rst = 0;
+        #20 rst = 0;
 
         // Roda a simulação por tempo máximo
         #1000;

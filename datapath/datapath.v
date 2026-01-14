@@ -20,7 +20,6 @@ module datapath (
     wire [31:0] SrcA, SrcB;
     wire [31:0] Result;
 
-    // ========== Program Counter ==========
     pc PC_REG (
         .clk(clk),
         .rst(rst),
@@ -50,7 +49,6 @@ module datapath (
         .y(PCNext)
     );
 
-    // ========== Register File ==========
     register_file REGISTER_FILE (
         .clk(clk),
         .rst(rst),
@@ -63,14 +61,12 @@ module datapath (
         .rd2(WriteData)
     );
 
-    // ========== Extend Unit ==========
     extend EXTEND_UNIT (
         .Instr(Instr[31:0]),
         .ImmSrc(ImmSrc),
         .ImmExt(ImmExt)
     );
 
-    // ========== ALU ==========
     // Mux para segundo operando da ALU
     mux2x1 ALU_SRC_MUX (
         .d0(WriteData),
@@ -79,7 +75,6 @@ module datapath (
         .y(SrcB)
     );
 
-    // ALU
     alu ALU (
         .a(SrcA),
         .b(SrcB),
@@ -88,12 +83,11 @@ module datapath (
         .zero(Zero)
     );
 
-    // ========== Result Mux ==========
+    // Result Mux
     mux2x1 RESULT_MUX (
         .d0(ALUResult),
         .d1(ReadData),
         .sel(ResultSrc),
         .y(Result)
     );
-
 endmodule
