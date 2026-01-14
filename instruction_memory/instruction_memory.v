@@ -7,7 +7,7 @@ module instruction_memory #(
 );
     localparam [31:0] PC_BASE_WORD = 32'h400;
 
-    reg [31:0] rom [0:WIDTH_WORD];
+    reg [31:0] rom [WIDTH_WORD:0];
 
     initial begin
         $readmemh(PATH_FILE, rom);
