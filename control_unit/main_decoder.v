@@ -13,11 +13,11 @@ module main_decoder (
 
     always @(*) begin
         case (op)
-            7'b0000011: instruction = 1_00_1_0_1_0_00; // lw (load word)
-            7'b0100011: instruction = 0_01_1_1_0_0_00; // sw (store word)
-            7'b0110011: instruction = 1_00_0_0_0_0_10; // R-type (add, sub, and, or, slt)
-            7'b1100011: instruction = 0_10_0_0_0_1_01; // beq
-            default: instruction = 0_00_0_0_0_0_00;
+            7'b0000011: instruction = 9'b1_00_1_0_1_0_00; // lw (load word)
+            7'b0100011: instruction = 9'b0_01_1_1_0_0_00; // sw (store word)
+            7'b0110011: instruction = 9'b1_00_0_0_0_0_10; // R-type (add, sub, and, or, slt)
+            7'b1100011: instruction = 9'b0_10_0_0_0_1_01; // beq
+            default: instruction = 9'b0_00_0_0_0_0_00;
         endcase
     end
 
