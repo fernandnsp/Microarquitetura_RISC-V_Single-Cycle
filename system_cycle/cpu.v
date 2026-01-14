@@ -21,7 +21,7 @@ module cpu (
     );
 
     instruction_memory #(
-        .PATH_FILE("C:/Users/fehse/Documents/unifei/cidigital/fernanda/entregas/Trabalho/Microarquitetura_RISC-V_Single-Cycle/machine_language.txt")
+        .PATH_FILE("C:/Users/nandinhaplay/Documents/unifei/cidigital/fernanda/entregas/Trabalho/Microarquitetura_RISC-V_Single-Cycle/machine_language.txt")
     ) INSTR (
         .a(PC),     // input datapath
         .rd(Instr)  // saida
