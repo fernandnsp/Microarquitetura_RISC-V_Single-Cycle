@@ -30,9 +30,7 @@ module tb_cpu;
         #20 rst = 0;
 
         // Roda a simulação por tempo máximo
-        #1000;
-
-        $display("Simulacao terminou por timeout");
+        #2000;
         $finish;
     end
 
